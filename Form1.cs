@@ -51,7 +51,7 @@ namespace ControlAsistencias
             var content = new StringContent(JsonConvert.SerializeObject(ob_usuario),Encoding.UTF8,"application/json");
             //manda a la URL el formato JSON
             var response = await asistente.PostAsync("http://localhost:5269/api/Autentication/Validar", content);
-            //obtener el key
+            //obtener el key a
             var json_response = await response.Content.ReadAsStringAsync();
             //convertir JSON a una clase
             var ob_JsonRespuesta = JsonConvert.DeserializeObject<RespuestaToken>(json_response);
