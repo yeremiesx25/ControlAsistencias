@@ -13,13 +13,22 @@ namespace ControlAsistencias
         }
 
         //enviar el cuerpo a validar el DNI y la CONTRASENA
-        public class ValidateUsuario {
+        public class ValidateUsuario
+        {
             public int DNI { get; set; }
             public string CONTRASENA { get; set; }
         }
         //RESPUESTA DEL TOKEN STRING
-        public class RespuestaToken {
+        public class RespuestaToken
+        {
             public string token { get; set; }
+        }
+
+        public static class SharedData
+        {
+            public static RespuestaToken ObJsonRespuesta { get; set; }
+            public static int obDNI { get; set; }
+            public static ValidateUsuario obCONTRASENA { get; set; }
         }
 
 
@@ -46,15 +55,29 @@ namespace ControlAsistencias
                 DNI = obtUsuario, // Asignar el DNI convertido
                 CONTRASENA = passwordText // Asignar la contraseña desde el TextBox
             };
-
             //convertir en formato json
-            var content = new StringContent(JsonConvert.SerializeObject(ob_usuario),Encoding.UTF8,"application/json");
+            var content = new StringContent(JsonConvert.SerializeObject(ob_usuario), Encoding.UTF8, "application/json");
             //manda a la URL el formato JSON
             var response = await asistente.PostAsync("http://localhost:5269/api/Autentication/Validar", content);
             //obtener el key a
             var json_response = await response.Content.ReadAsStringAsync();
             //convertir JSON a una clase
             var ob_JsonRespuesta = JsonConvert.DeserializeObject<RespuestaToken>(json_response);
+            SharedData.ObJsonRespuesta = ob_JsonRespuesta;
+
+            SharedData.obDNI = obtUsuario;
+
+            if (ob_JsonRespuesta != null)
+            {
+                // Crear una instancia del nuevo formulario al que deseas redirigir
+                ValidarAsistencia vAsistencia = new ValidarAsistencia();
+
+                // Mostrar el nuevo formulario
+                vAsistencia.Show();
+                // Ocultar o cerrar el formulario actual, si es necesario
+                this.Hide(); // O bien this.Close();
+            }
+
         }
     }
 }
