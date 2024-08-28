@@ -34,6 +34,7 @@
             label4 = new Label();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
+            BTN_SALIR = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -111,6 +112,26 @@
             pictureBox2.TabIndex = 34;
             pictureBox2.TabStop = false;
             // 
+            // BTN_SALIR
+            // 
+            BTN_SALIR.BackColor = Color.Transparent;
+            BTN_SALIR.FlatAppearance.BorderSize = 0;
+            BTN_SALIR.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            BTN_SALIR.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+            BTN_SALIR.FlatStyle = FlatStyle.Flat;
+            BTN_SALIR.Font = new Font("Bernard MT Condensed", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            BTN_SALIR.ForeColor = Color.White;
+            BTN_SALIR.ImageAlign = ContentAlignment.MiddleLeft;
+            BTN_SALIR.Location = new Point(374, 12);
+            BTN_SALIR.Name = "BTN_SALIR";
+            BTN_SALIR.RightToLeft = RightToLeft.No;
+            BTN_SALIR.Size = new Size(137, 47);
+            BTN_SALIR.TabIndex = 35;
+            BTN_SALIR.Text = "SALIR";
+            BTN_SALIR.TextImageRelation = TextImageRelation.TextBeforeImage;
+            BTN_SALIR.UseVisualStyleBackColor = false;
+            BTN_SALIR.Click += BTN_SALIR_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -119,6 +140,7 @@
             BackgroundImage = Properties.Resources.logoInicio;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(523, 280);
+            Controls.Add(BTN_SALIR);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(label4);
@@ -142,5 +164,6 @@
         private Label label4;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private Button BTN_SALIR;
     }
 }

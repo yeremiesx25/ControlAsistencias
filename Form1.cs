@@ -34,35 +34,47 @@ namespace ControlAsistencias
 
         private async void btnIngresar_Click(object sender, EventArgs e)
         {
-            var asistente = new HttpClient();//llamado para almacenar en asistente el ingreso del http
+            var asistente = new HttpClient();
 
             // Obtener el texto de los TextBox
-            string dniText = txt_user.Text; // Obtener el DNI desde el TextBox txt_user
-            string passwordText = txt_password.Text; // Obtener la contraseña desde el TextBox txt_password
+            string dniText = txt_user.Text;
+            string passwordText = txt_password.Text;
 
             // Convertir el DNI a un entero
             int obtUsuario;
             if (!int.TryParse(dniText, out obtUsuario))
             {
-                // Mostrar un mensaje de error si el DNI no es un número válido
                 MessageBox.Show("Por favor, ingrese un número válido para el DNI.");
-                return; // Salir del método si hay un error
+                return;
             }
 
-            // Crear una instancia de ValidateUsuario con los valores obtenidos de los TextBox
             ValidateUsuario ob_usuario = new ValidateUsuario
             {
-                DNI = obtUsuario, // Asignar el DNI convertido
-                CONTRASENA = passwordText // Asignar la contraseña desde el TextBox
+                DNI = obtUsuario,
+                CONTRASENA = passwordText
             };
-            //convertir en formato json
+
+            // Convertir en formato JSON
             var content = new StringContent(JsonConvert.SerializeObject(ob_usuario), Encoding.UTF8, "application/json");
-            //manda a la URL el formato JSON
+
+            // Mandar a la URL el formato JSON
             var response = await asistente.PostAsync("http://localhost:5269/api/Autentication/Validar", content);
-            //obtener el key a
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show($"Error al validar usuario: {response.StatusCode}");
+                return;
+            }
+
             var json_response = await response.Content.ReadAsStringAsync();
-            //convertir JSON a una clase
             var ob_JsonRespuesta = JsonConvert.DeserializeObject<RespuestaToken>(json_response);
+
+            if (ob_JsonRespuesta == null || string.IsNullOrEmpty(ob_JsonRespuesta.token))
+            {
+                MessageBox.Show("Token de autenticación no válido o no recibido.");
+                return;
+            }
+
+
             SharedData.ObJsonRespuesta = ob_JsonRespuesta;
 
             SharedData.obDNI = obtUsuario;
@@ -72,12 +84,18 @@ namespace ControlAsistencias
                 // Crear una instancia del nuevo formulario al que deseas redirigir
                 ValidarAsistencia vAsistencia = new ValidarAsistencia();
 
+
                 // Mostrar el nuevo formulario
                 vAsistencia.Show();
                 // Ocultar o cerrar el formulario actual, si es necesario
                 this.Hide(); // O bien this.Close();
             }
 
+        }
+
+        private void BTN_SALIR_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
