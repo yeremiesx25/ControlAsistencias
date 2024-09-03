@@ -105,7 +105,7 @@ namespace ControlAsistencias
                         // Intenta convertir el valor de "mensaje" a un número entero
                         if (int.TryParse(jsonResponse.mensaje.ToString(), out testUserInt))
                         {
-                            switch (testUserInt)
+                            switch (testUserInt)//switch para las condificones al deserializar el mensaje
                             {
                                 case 0:
                                     if (ob_JsonRespuesta != null)
