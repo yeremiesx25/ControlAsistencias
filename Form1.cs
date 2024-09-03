@@ -59,9 +59,10 @@ namespace ControlAsistencias
 
             // Mandar a la URL el formato JSON
             var response = await asistente.PostAsync("http://localhost:5269/api/Autentication/Validar", content);
+            
             if (!response.IsSuccessStatusCode)
             {
-                MessageBox.Show($"Error al validar usuario: {response.StatusCode}");
+                MessageBox.Show($"Error al validar usuario: Verificar DNI o Contraseña esten correctamente escritos");
                 return;
             }
 
@@ -79,18 +80,77 @@ namespace ControlAsistencias
 
             SharedData.obDNI = obtUsuario;
 
-            if (ob_JsonRespuesta != null)
+            var Ingreso_User = new HttpClient();
+
+            Ingreso_User.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", ob_JsonRespuesta.token);
+            var response2 = await Ingreso_User.PostAsync("http://localhost:5269/api/Usuario/ValUser", content);
+            var test_User = await response2.Content.ReadAsStringAsync();
+
+            // Verificar si la respuesta de la API es nula o vacía
+            if (string.IsNullOrEmpty(test_User))
             {
-                // Crear una instancia del nuevo formulario al que deseas redirigir
-                ValidarAsistencia vAsistencia = new ValidarAsistencia();
-
-
-                // Mostrar el nuevo formulario
-                vAsistencia.Show();
-                // Ocultar o cerrar el formulario actual, si es necesario
-                this.Hide(); // O bien this.Close();
+                MessageBox.Show("La respuesta de la API es nula o vacía.");
             }
+            else
+            {
+                try
+                {
+                    // Deserializar el JSON si es necesario para convertirlo en el mensaje 
+                    var jsonResponse = JsonConvert.DeserializeObject<dynamic>(test_User);
 
+                    // va a mostrar lo del mensaje 
+                    if (jsonResponse.mensaje != null)
+                    {
+                        int testUserInt;
+                        // Intenta convertir el valor de "mensaje" a un número entero
+                        if (int.TryParse(jsonResponse.mensaje.ToString(), out testUserInt))
+                        {
+                            switch (testUserInt)
+                            {
+                                case 0:
+                                    if (ob_JsonRespuesta != null)
+                                    {
+                                        ValidarAsistencia vAsistencia = new ValidarAsistencia();
+                                        // Mostrar el nuevo formulario
+                                        vAsistencia.Show();
+                                        this.Hide(); // O bien this.Close();
+                                    }
+                                    break;
+                                case 1:
+                                    if (ob_JsonRespuesta != null)
+                                    {
+                                        // Crear una instancia del nuevo formulario al que deseas redirigir
+                                        VistaAdmin vAsistencia = new VistaAdmin();
+
+
+                                        // Mostrar el nuevo formulario
+                                        vAsistencia.Show();
+                                        // Ocultar o cerrar el formulario actual, si es necesario
+                                        this.Hide(); // O bien this.Close();
+                                    }
+                                    break;
+                                default:
+                                    MessageBox.Show($"Respuesta inesperada: {testUserInt}");
+                                    break;
+
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("El valor de test_User no se puede convertir a un número.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Respuesta inesperada del servidor.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Maneja cualquier otro error inesperado
+                    MessageBox.Show($"Ocurrió un error al procesar la respuesta: {ex.Message}");
+                }
+            }
         }
 
         private void BTN_SALIR_Click(object sender, EventArgs e)

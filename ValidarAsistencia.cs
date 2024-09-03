@@ -57,7 +57,6 @@ namespace ControlAsistencias
                 MessageBox.Show($"Respuesta de la API recibida: {test}");
             }
 
-
         }
 
         private void BTN_SALIR_Click(object sender, EventArgs e)
