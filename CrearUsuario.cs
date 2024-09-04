@@ -69,7 +69,7 @@ namespace ControlAsistencias
                 TipoDeUsuario = 2
             };
 
-            var content2= new StringContent(JsonConvert.SerializeObject(objNewPracticante), Encoding.UTF8, "application/json");
+            var content2 = new StringContent(JsonConvert.SerializeObject(objNewPracticante), Encoding.UTF8, "application/json");
             // Hacer la solicitud POST a la API de asistencia
             var response = await newUser.PostAsync("http://localhost:5269/api/Usuario/CrearUsuario", content2);
 
@@ -86,6 +86,11 @@ namespace ControlAsistencias
                 // Procesar la respuesta recibida
                 MessageBox.Show($"Respuesta de la API recibida: {test}");
             }
+        }
+
+        private void btn_Salir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
