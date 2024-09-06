@@ -51,6 +51,9 @@
             label6 = new Label();
             label7 = new Label();
             btn_Salir = new Button();
+            pictureBox8 = new PictureBox();
+            txt_Universidad = new TextBox();
+            label8 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -58,6 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             SuspendLayout();
             // 
             // txt_DNI
@@ -225,7 +229,7 @@
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Bernard MT Condensed", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnIngresar.ForeColor = Color.White;
-            btnIngresar.Location = new Point(208, 364);
+            btnIngresar.Location = new Point(319, 364);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.RightToLeft = RightToLeft.No;
             btnIngresar.Size = new Size(165, 62);
@@ -327,6 +331,40 @@
             btn_Salir.UseVisualStyleBackColor = false;
             btn_Salir.Click += btn_Salir_Click;
             // 
+            // pictureBox8
+            // 
+            pictureBox8.BackColor = Color.Transparent;
+            pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
+            pictureBox8.Location = new Point(25, 379);
+            pictureBox8.Name = "pictureBox8";
+            pictureBox8.Size = new Size(32, 30);
+            pictureBox8.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox8.TabIndex = 49;
+            pictureBox8.TabStop = false;
+            // 
+            // txt_Universidad
+            // 
+            txt_Universidad.BackColor = Color.FromArgb(192, 0, 192);
+            txt_Universidad.BorderStyle = BorderStyle.FixedSingle;
+            txt_Universidad.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            txt_Universidad.ForeColor = Color.White;
+            txt_Universidad.Location = new Point(63, 379);
+            txt_Universidad.Name = "txt_Universidad";
+            txt_Universidad.Size = new Size(182, 29);
+            txt_Universidad.TabIndex = 48;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = Color.Transparent;
+            label8.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.ForeColor = Color.Purple;
+            label8.Location = new Point(63, 365);
+            label8.Name = "label8";
+            label8.Size = new Size(95, 17);
+            label8.TabIndex = 50;
+            label8.Text = "UNIVERSIDAD";
+            // 
             // CrearUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -334,6 +372,9 @@
             BackgroundImage = Properties.Resources.logoInicio;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(pictureBox8);
+            Controls.Add(txt_Universidad);
+            Controls.Add(label8);
             Controls.Add(btn_Salir);
             Controls.Add(btnIngresar);
             Controls.Add(pictureBox7);
@@ -366,6 +407,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -394,5 +436,8 @@
         private Label label6;
         private Label label7;
         private Button btn_Salir;
+        private PictureBox pictureBox8;
+        private TextBox txt_Universidad;
+        private Label label8;
     }
 }

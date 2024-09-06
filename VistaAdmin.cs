@@ -41,5 +41,15 @@ namespace ControlAsistencias
             vsAd.Show();
 
         }
+
+        private void btn_practicantes_Click(object sender, EventArgs e)
+        {
+            loadForm(new FrListaPracticantes());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
