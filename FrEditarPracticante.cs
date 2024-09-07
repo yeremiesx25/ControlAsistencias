@@ -83,7 +83,7 @@ namespace ControlAsistencias
                 return;
             }
 
-            //Crear el objeto para registrar asistencia y convertirlo a JSON
+            //Crear el objeto para registrar asistencia y convertirlo a JSON 
             EditUser objNewPracticante = new EditUser()
             {
                 DNI = obtUsuario,
