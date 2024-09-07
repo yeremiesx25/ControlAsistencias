@@ -32,6 +32,7 @@ namespace ControlAsistencias
             public string Telefono { get; set; }
             public DateTime InicioDePracticas { get; set; }
             public string Universidad { get; set; }
+            public string Departamento { get; set; }
         }
 
         public class ResponseModel<T>
@@ -41,7 +42,7 @@ namespace ControlAsistencias
         }
 
 
-        private async void CargarDatos()
+        public async void CargarDatos()
         {
             var obJsonRespuesta = SharedData.ObJsonRespuesta;
 
@@ -81,6 +82,7 @@ namespace ControlAsistencias
         {
             CargarDatos();
         }
+
 
         private async void btn_buscar_Click(object sender, EventArgs e)
         {

@@ -37,6 +37,7 @@
             dataGridView1 = new DataGridView();
             btn_buscar = new Button();
             txt_buscar = new TextBox();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -125,6 +126,29 @@
             txt_buscar.Size = new Size(270, 29);
             txt_buscar.TabIndex = 35;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.BackgroundImageLayout = ImageLayout.None;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button1.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Bernard MT Condensed", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.ForeColor = Color.White;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(318, 409);
+            button1.Name = "button1";
+            button1.RightToLeft = RightToLeft.Yes;
+            button1.Size = new Size(219, 29);
+            button1.TabIndex = 38;
+            button1.Text = "Generar Asistencia";
+            button1.TextAlign = ContentAlignment.MiddleRight;
+            button1.TextImageRelation = TextImageRelation.TextBeforeImage;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // FrListaAsistencia
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -132,6 +156,7 @@
             BackgroundImage = Properties.Resources.logoInicio;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(dataGridView1);
             Controls.Add(btn_buscar);
             Controls.Add(txt_buscar);
@@ -149,5 +174,6 @@
         private DataGridView dataGridView1;
         private Button btn_buscar;
         private TextBox txt_buscar;
+        private Button button1;
     }
 }

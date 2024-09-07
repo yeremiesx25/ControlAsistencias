@@ -111,7 +111,7 @@ namespace ControlAsistencias
             else
             {
                 // Procesar la respuesta recibida
-                MessageBox.Show($"Respuesta de la API recibida: {test}");
+                MessageBox.Show($"Usuario: {test}");
             }
             this.Close();
         }
