@@ -19,6 +19,7 @@ namespace ControlAsistencias
         public FrListaPracticantes()
         {
             InitializeComponent();
+            dataGridView1.SelectionChanged += new EventHandler(dataGridView1_SelectionChanged);
         }
 
         public class usuario
@@ -93,7 +94,7 @@ namespace ControlAsistencias
             int obtUsuario;
             if (!int.TryParse(dniText, out obtUsuario))
             {
-                
+
                 usuario objNewPracticante = new usuario()
                 {
                     DNI = 0,
@@ -126,7 +127,7 @@ namespace ControlAsistencias
                     }
                 }
             }
-            else 
+            else
             {
                 usuario objNewPracticante = new usuario()
                 {
@@ -160,7 +161,43 @@ namespace ControlAsistencias
                     }
                 }
             }
-            
+
+        }
+
+        public static class MandarUsuario
+        {
+            public static int DNI_e { get; set; }
+            public static string CONTRASENA_e { get; set; }
+            public static string Nombres_e { get; set; }
+            public static string Apellidos_e { get; set; }
+            public static string Email_e { get; set; }
+            public static string Telefono_e { get; set; }
+            public static DateTime InicioDePracticas_e { get; set; }
+            public static string Universidad_e { get; set; }
+        }
+
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                MandarUsuario.DNI_e = selectedRow.Cells["DNI"].Value != null ? Convert.ToInt32(selectedRow.Cells["DNI"].Value) : 0;
+                MandarUsuario.CONTRASENA_e = selectedRow.Cells["CONTRASENA"].Value?.ToString() ?? string.Empty;
+                MandarUsuario.Nombres_e = selectedRow.Cells["Nombres"].Value?.ToString() ?? string.Empty;
+                MandarUsuario.Apellidos_e = selectedRow.Cells["Apellidos"].Value?.ToString() ?? string.Empty;
+                MandarUsuario.Email_e = selectedRow.Cells["Email"].Value?.ToString() ?? string.Empty;
+                MandarUsuario.Telefono_e = selectedRow.Cells["Telefono"].Value?.ToString() ?? string.Empty;
+                MandarUsuario.Universidad_e = selectedRow.Cells["Universidad"].Value?.ToString() ?? string.Empty;
+            }
+        }
+
+
+        private void btn_EditPracticante_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FrEditarPracticante abrirEditarPracticante = new FrEditarPracticante();
+            abrirEditarPracticante.Show();
         }
     }
 }

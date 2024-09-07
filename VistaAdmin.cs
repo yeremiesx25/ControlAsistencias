@@ -51,5 +51,15 @@ namespace ControlAsistencias
         {
             Application.Exit();
         }
+
+        private void btn_asistencia_Click(object sender, EventArgs e)
+        {
+            loadForm(new FrListaAsistencia());
+        }
+
+        private void btn_editarUsuario_Click(object sender, EventArgs e)
+        {
+            loadForm(new FrEditarPracticante());
+        }
     }
 }
