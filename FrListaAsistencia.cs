@@ -217,7 +217,7 @@ namespace ControlAsistencias
 
                     if (resultado != null && resultado.response != null)
                     {
-                        // Asignar la lista al DataGridView
+                        // Asignar la lista al DataGridView2
                         dataGridView1.DataSource = resultado.response.Select(a => new
                         {
                             a.DIAS,
