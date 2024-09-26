@@ -36,7 +36,7 @@ namespace ControlAsistencias
         {
             var asistente = new HttpClient();
 
-            // Obtener el texto de los TextBox
+            // Obtener el texto de los TextBoxx
             string dniText = txt_user.Text;
             string passwordText = txt_password.Text;
 
