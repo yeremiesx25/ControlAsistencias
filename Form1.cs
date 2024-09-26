@@ -59,7 +59,7 @@ namespace ControlAsistencias
 
             // Mandar a la URL el formato JSON
             var response = await asistente.PostAsync("http://localhost:5269/api/Autentication/Validar", content);
-            
+
             if (!response.IsSuccessStatusCode)
             {
                 MessageBox.Show($"Error al validar usuario: Verificar DNI o Contraseña esten correctamente escritos");

@@ -149,7 +149,7 @@
             Controls.Add(txt_user);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
-            Text = "Form1";
+            Text = "ad";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);

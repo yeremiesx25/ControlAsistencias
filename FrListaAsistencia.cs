@@ -363,7 +363,7 @@ namespace ControlAsistencias
                     {
                         x.Span("Pagina ");
                         x.CurrentPageNumber();
-                        x.Span("de ");
+                        x.Span(" de ");
                         x.TotalPages();
 
                     });
