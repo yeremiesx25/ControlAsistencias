@@ -99,7 +99,7 @@ namespace ControlAsistencias
 
             var content2 = new StringContent(JsonConvert.SerializeObject(objNewPracticante), Encoding.UTF8, "application/json");
             //Hacer la solicitud POST a la API de asistencia
-            var response = await EditUser.PutAsync("http://localhost:5269/api/Usuario/EditarUsuario", content2);
+            var response = await EditUser.PutAsync("http://localhost:7266/api/Usuario/EditarUsuario", content2);
 
             var test = await response.Content.ReadAsStringAsync();
 

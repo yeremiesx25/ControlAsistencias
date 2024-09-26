@@ -74,7 +74,7 @@ namespace ControlAsistencias
 
             var content2 = new StringContent(JsonConvert.SerializeObject(objNewPracticante), Encoding.UTF8, "application/json");
             //Hacer la solicitud POST a la API de asistencia
-            var response = await newUser.PostAsync("http://localhost:5269/api/Usuario/CrearUsuario", content2);
+            var response = await newUser.PostAsync("http://localhost:7266/api/Usuario/CrearUsuario", content2);
 
             var test = await response.Content.ReadAsStringAsync();
 

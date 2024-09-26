@@ -205,6 +205,7 @@
             P_principal.Name = "P_principal";
             P_principal.Size = new Size(692, 450);
             P_principal.TabIndex = 42;
+            P_principal.Paint += P_principal_Paint;
             // 
             // PANEL_PRINCIPAL
             // 

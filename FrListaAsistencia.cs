@@ -80,7 +80,7 @@ namespace ControlAsistencias
             ListaPracticantes.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", obJsonRespuesta.token);
 
             // Hacer la solicitud GET a la API de usuarios
-            var response = await ListaPracticantes.GetAsync("http://localhost:5269/api/MarcarAsistencia/MsAsistencia");
+            var response = await ListaPracticantes.GetAsync("http://localhost:7266/api/MarcarAsistencia/MsAsistencia");
 
             var jsonResponse = await response.Content.ReadAsStringAsync();
 
@@ -139,7 +139,7 @@ namespace ControlAsistencias
                 var content2 = new StringContent(JsonConvert.SerializeObject(objNewPracticante), Encoding.UTF8, "application/json");
 
                 // Hacer la solicitud POST a la API de asistencia
-                var response = await BusquedaListaPracticante.PostAsync("http://localhost:5269/api/MarcarAsistencia/FilterAsistencia", content2);
+                var response = await BusquedaListaPracticante.PostAsync("http://localhost:7266/api/MarcarAsistencia/FilterAsistencia", content2);
 
                 // Leer la respuesta
                 var test = await response.Content.ReadAsStringAsync();
@@ -202,7 +202,7 @@ namespace ControlAsistencias
                 var content2 = new StringContent(JsonConvert.SerializeObject(objNewPracticante), Encoding.UTF8, "application/json");
 
                 // Hacer la solicitud POST a la API de asistencia
-                var response = await BusquedaListaPracticante.PostAsync("http://localhost:5269/api/MarcarAsistencia/FilterAsistencia", content2);
+                var response = await BusquedaListaPracticante.PostAsync("http://localhost:7266/api/MarcarAsistencia/FilterAsistencia", content2);
 
                 // Leer la respuesta
                 var test = await response.Content.ReadAsStringAsync();
@@ -251,7 +251,7 @@ namespace ControlAsistencias
             var contentBs = new StringContent(JsonConvert.SerializeObject(objBusqueda), Encoding.UTF8, "application/json");
 
             // Hacer la solicitud POST a la API de asistencia
-            var responseBus = await BusquedaPracticante.PostAsync("http://localhost:5269/api/Usuario/FilterUsuario", contentBs);
+            var responseBus = await BusquedaPracticante.PostAsync("http://localhost:7266/api/Usuario/FilterUsuario", contentBs);
 
             // Leer la respuesta
             var jsonResponse = await responseBus.Content.ReadAsStringAsync();

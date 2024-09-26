@@ -58,7 +58,7 @@ namespace ControlAsistencias
             var content = new StringContent(JsonConvert.SerializeObject(ob_usuario), Encoding.UTF8, "application/json");
 
             // Mandar a la URL el formato JSON
-            var response = await asistente.PostAsync("http://localhost:5269/api/Autentication/Validar", content);
+            var response = await asistente.PostAsync("http://localhost:7266/api/Autentication/Validar", content);
 
             if (!response.IsSuccessStatusCode)
             {
@@ -83,7 +83,7 @@ namespace ControlAsistencias
             var Ingreso_User = new HttpClient();
 
             Ingreso_User.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", ob_JsonRespuesta.token);
-            var response2 = await Ingreso_User.PostAsync("http://localhost:5269/api/Usuario/ValUser", content);
+            var response2 = await Ingreso_User.PostAsync("http://localhost:7266/api/Usuario/ValUser", content);
             var test_User = await response2.Content.ReadAsStringAsync();
 
             // Verificar si la respuesta de la API es nula o vacía

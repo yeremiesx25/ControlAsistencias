@@ -61,5 +61,10 @@ namespace ControlAsistencias
         {
             loadForm(new FrEditarPracticante());
         }
+
+        private void P_principal_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

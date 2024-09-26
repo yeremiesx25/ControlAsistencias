@@ -41,7 +41,7 @@ namespace ControlAsistencias
             var content1 = new StringContent(JsonConvert.SerializeObject(obasist), Encoding.UTF8, "application/json");
 
             // Hacer la solicitud POST a la API de asistencia
-            var response = await asistenciaUser.PostAsync("http://localhost:5269/api/MarcarAsistencia/MrcAsistencia", content1);
+            var response = await asistenciaUser.PostAsync("http://localhost:7266/api/MarcarAsistencia/MrcAsistencia", content1);
 
             // Leer el contenido de la respuesta
             var test = await response.Content.ReadAsStringAsync();
